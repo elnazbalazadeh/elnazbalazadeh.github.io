@@ -1,9 +1,9 @@
 :root {
-  --red-dark: #780000;
-  --red: #c1121f;
-  --cream: #fdf0d5;
-  --blue-dark: #003049;
-  --blue-accent: #669bbc;
+  --dark-blue: #0d1b2a;
+  --navy-blue: #1b263b;
+  --steel-blue: #415a77;
+  --sky-blue: #778da9;
+  --light-gray: #e0e1dd;
 }
 
 * {
@@ -14,8 +14,8 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: var(--red-dark);
-  color: var(--cream);
+  background-color: var(--dark-blue);
+  color: var(--light-gray);
 }
 
 .hero {
@@ -24,31 +24,33 @@ body {
   align-items: center;
   justify-content: center;
   padding: 0 20px;
-  background: var(--red-dark);
+  background: var(--dark-blue);
 }
 
 .hero-content {
   text-align: center;
   max-width: 800px;
+  opacity: 0;
+  animation: fadeSlideUp 1s ease-out 0.4s forwards;
 }
 
 .name {
   font-size: 3rem;
-  color: var(--red);
+  color: var(--light-gray);
   font-weight: 700;
 }
 
 .tagline {
   font-size: 1.5rem;
   font-weight: 400;
-  color: var(--blue-accent);
+  color: var(--sky-blue);
   margin-top: 10px;
 }
 
 .intro {
   font-size: 1.1rem;
   margin-top: 20px;
-  color: var(--cream);
+  color: var(--steel-blue);
 }
 
 .cta {
@@ -60,15 +62,27 @@ body {
 
 .cta a {
   text-decoration: none;
-  color: var(--red-dark);
-  background: var(--blue-accent);
+  color: var(--dark-blue);
+  background: var(--sky-blue);
   padding: 12px 24px;
   border-radius: 5px;
   font-weight: 700;
-  transition: 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .cta a:hover {
-  background: var(--cream);
-  color: var(--blue-dark);
+  transform: translateY(-2px);
+  background: var(--light-gray);
+  color: var(--navy-blue);
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
