@@ -1,9 +1,9 @@
 :root {
-  --dark-blue: #0d1b2a;
-  --navy-blue: #1b263b;
-  --steel-blue: #415a77;
-  --sky-blue: #778da9;
-  --light-gray: #e0e1dd;
+  --midnight: #0d1b2a;
+  --navy: #1b263b;
+  --steel: #415a77;
+  --sky: #778da9;
+  --mist: #e0e1dd;
 }
 
 * {
@@ -13,44 +13,57 @@
 }
 
 body {
+  background-color: var(--midnight);
+  color: var(--mist);
   font-family: 'Montserrat', sans-serif;
-  background-color: var(--dark-blue);
-  color: var(--light-gray);
+  line-height: 1.6;
 }
 
+h1, h2, h3 {
+  color: var(--mist);
+  font-weight: 700;
+}
+
+a {
+  color: var(--sky);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  color: var(--steel);
+}
+
+/* Hero Section */
 .hero {
-  height: 100vh;
+  min-height: 100vh;
+  background-color: var(--navy);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 20px;
-  background: var(--dark-blue);
 }
 
 .hero-content {
   text-align: center;
   max-width: 800px;
-  opacity: 0;
-  animation: fadeSlideUp 1s ease-out 0.4s forwards;
 }
 
 .name {
   font-size: 3rem;
-  color: var(--light-gray);
-  font-weight: 700;
+  color: var(--mist);
 }
 
 .tagline {
   font-size: 1.5rem;
-  font-weight: 400;
-  color: var(--sky-blue);
+  color: var(--sky);
   margin-top: 10px;
 }
 
 .intro {
   font-size: 1.1rem;
   margin-top: 20px;
-  color: var(--steel-blue);
+  color: var(--mist);
 }
 
 .cta {
@@ -61,28 +74,150 @@ body {
 }
 
 .cta a {
-  text-decoration: none;
-  color: var(--dark-blue);
-  background: var(--sky-blue);
+  background: var(--sky);
+  color: var(--midnight);
   padding: 12px 24px;
-  border-radius: 5px;
-  font-weight: 700;
-  transition: transform 0.3s ease, background 0.3s ease;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.3s ease;
 }
 
 .cta a:hover {
-  transform: translateY(-2px);
-  background: var(--light-gray);
-  color: var(--navy-blue);
+  background: var(--steel);
+  color: var(--mist);
 }
 
-@keyframes fadeSlideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Divider */
+.section-divider {
+  border: none;
+  height: 2px;
+  background: var(--steel);
+  width: 60%;
+  margin: 60px auto;
+  opacity: 0.4;
+}
+
+/* Research Section */
+.research {
+  background-color: var(--midnight);
+  padding: 60px 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: var(--sky);
+  margin-bottom: 40px;
+}
+
+.interests {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: var(--mist);
+}
+
+.pub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pub-card {
+  background-color: var(--navy);
+  border: 1px solid var(--steel);
+  border-radius: 8px;
+  padding: 20px;
+  color: var(--mist);
+  box-shadow: 0 0 12px rgba(65, 90, 119, 0.3);
+}
+
+.pub-card h3 {
+  color: var(--sky);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.pub-card .authors {
+  font-size: 0.95rem;
+}
+
+.pub-card .venue {
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.pub-card .abstract {
+  font-size: 0.9rem;
+}
+
+.pub-link {
+  display: inline-block;
+  margin-top: 12px;
+  background-color: var(--sky);
+  color: var(--midnight);
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.pub-link:hover {
+  background-color: var(--steel);
+  color: var(--mist);
+}
+
+/* Ongoing Research */
+.ongoing-horizontal {
+  background-color: var(--midnight);
+  padding: 60px 20px;
+}
+
+.ongoing-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: var(--navy);
+  border-radius: 12px;
+  padding: 30px;
+  border: 1px solid var(--steel);
+  box-shadow: 0 0 20px rgba(119, 141, 169, 0.5);
+  transition: box-shadow 0.4s ease;
+}
+
+.ongoing-card:hover {
+  box-shadow: 0 0 30px rgba(119, 141, 169, 0.8);
+}
+
+.ongoing-left h4 {
+  color: var(--sky);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.ongoing-left h2 {
+  color: var(--mist);
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.ongoing-authors {
+  font-size: 0.95rem;
+  color: var(--mist);
+}
+
+.ongoing-right p {
+  font-size: 1.05rem;
+  color: var(--mist);
+}
+
+.ongoing-status {
+  font-style: italic;
+  color: var(--sky);
+  margin-top: 12px;
 }
