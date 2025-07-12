@@ -6,6 +6,56 @@
   <title>Elnaz Balazadeh | Robotics & AI Researcher</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #1b263b;
+      color: #e0e1dd;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      width: 300px;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .popup h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #778da9;
+    }
+    .popup p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+      color: #e0e1dd;
+    }
+    .popup .close-btn {
+      background: #415a77;
+      color: #e0e1dd;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .popup .close-btn:hover {
+      background: #778da9;
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+  </style>
 </head>
 <body>
 
@@ -17,8 +67,8 @@
         I'm passionate about building intelligent systems that bridge the gap between humans and machines. My work focuses on human-robot interaction, robotic manipulation, and real-world AI applications.
       </p>
       <div class="cta">
-        <a href="#cv">View CV</a>
-        <a href="#contact">Contact Me</a>
+        <a href="https://drive.google.com/file/d/11kdDSObvo6_IJzhP2RIFpGVnJV_H7xBZ/view" target="_blank">View CV</a>
+        <a id="contact-link" href="#">Contact Me</a>
       </div>
     </div>
   </header>
@@ -29,7 +79,7 @@
     <h2 class="section-title">Research & Publications</h2>
     <p class="interests">
       <strong>Research Interests:</strong><br>
-      Robotic Manipulation · Human Demonstration · Reinforcement Learning · Deep Learning
+      Robotic Manipulation · Human Demonstration · Reinforcement Learning · Deep Learning and Computer Vision.
     </p>
 
     <div class="pub-grid">
@@ -75,5 +125,34 @@
     </div>
   </section>
 
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="contact-popup">
+    <h2>Contact Me</h2>
+    <p>My email: <a href="mailto:balazadeh.elnaz@gmail.com">balazadeh.elnaz@gmail.com</a></p>
+    <button class="close-btn" id="close-btn">Close</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const contactLink = document.getElementById('contact-link');
+      const popup = document.getElementById('contact-popup');
+      const overlay = document.getElementById('overlay');
+      const closeBtn = document.getElementById('close-btn');
+
+      contactLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        popup.style.display = 'block';
+        overlay.style.display = 'block';
+      });
+
+      function closePopup() {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+      }
+
+      closeBtn.addEventListener('click', closePopup);
+      overlay.addEventListener('click', closePopup);
+    });
+  </script>
 </body>
 </html>
