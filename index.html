@@ -57,6 +57,62 @@
     }
   </style>
 </head>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const slides = document.querySelectorAll(".slide");
+  const prevBtn = document.getElementById("prev");
+  const nextBtn = document.getElementById("next");
+  const counter = document.getElementById("counter");
+  const dotsContainer = document.getElementById("dots");
+
+  let current = 0;
+
+  // Create dots
+  slides.forEach((_, index) => {
+    const dot = document.createElement("button");
+    dot.classList.add("dot");
+
+    if(index === 0){
+      dot.classList.add("active");
+    }
+
+    dot.addEventListener("click", () => {
+      showSlide(index);
+    });
+
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll(".dot");
+
+  function showSlide(index){
+
+    slides.forEach(slide => slide.classList.remove("active"));
+    dots.forEach(dot => dot.classList.remove("active"));
+
+    slides[index].classList.add("active");
+    dots[index].classList.add("active");
+
+    counter.textContent = `${index + 1} / ${slides.length}`;
+
+    current = index;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    let next = (current + 1) % slides.length;
+    showSlide(next);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    let prev = (current - 1 + slides.length) % slides.length;
+    showSlide(prev);
+  });
+
+});
+</script>
+
 <body>
 
   <header class="hero">
@@ -64,7 +120,7 @@
       <h1 class="name">Elnaz Balazadeh</h1>
       <h2 class="tagline">Robotics & AI Researcher</h2>
       <p class="intro">
-        I'm passionate about building intelligent systems that bridge the gap between humans and machines. My work focuses on human-robot interaction, robotic manipulation, and real-world AI applications. In my free time, I enjoy cooking, reading and learning French and whenever life gives me free time, I ride <span role="img" aria-label="biking">&#x1F389;</span>.
+        I'm passionate about building intelligent systems that bridge the gap between humans and machines. My work focuses on human-robot interaction, robotic manipulation, and real-world AI applications. In my free time, I enjoy cooking, reading and learning French and whenever life gives me free time, I ride <span role="img" aria-label="biking">&#x1F6B4;</span>.
       </p>
       <div class="cta">
         <a href="https://drive.google.com/file/d/1jMc6DdL-5roEVgIfDauD4G1TTDVjNZJO/view?usp=sharing" target="_blank">View CV</a>
@@ -79,7 +135,7 @@
     <h2 class="section-title">Research & Publications</h2>
     <p class="interests">
       <strong>Research Interests:</strong><br>
-      Robotic Manipulation, Deep learning, Computer vision, Reinforcement Learning, and Imitation learning.
+      Robotic Manipulation, Mechatronic Desigh, Computer Vision, Learning from Human Demonstration, Deep Learning, Imitation Learning Reinforcement Learning.
     </p>
 
     <div class="pub-grid">
@@ -124,6 +180,89 @@
       </div>
     </div>
   </section>
+
+  <hr class="section-divider" />
+  <h2 class="slider-title">📷 Project Gallery</h2>
+  <!-- Image Slider -->
+  <div class="project-slider">
+    <div class="slider-track-wrap" id="track">
+
+      <!-- SLIDE 1 — replace src with your image path -->
+      <div class="slide active">
+        <img class="slide-img" src="images/dual PET scan.jpg" alt="RGB Frame Sample" />
+        <div class="slide-caption">
+          <p class="caption-title">PET Scan device</p>
+          <p class="caption-desc">Final Design of PET Scan in SolidWorks</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="slide">
+        <img class="slide-img" src="images/ARMS.jpg" alt="Depth Map" />
+        <div class="slide-caption">
+          <p class="caption-title">4DOF Manipulators</p>
+          <p class="caption-desc">These manipulators were used for imitation project.</p>
+        </div>
+      </div>
+
+      <!-- Add more slides as needed -->
+       <!-- VIDEO SLIDE 1 -->
+      <div class="slide">
+        <iframe
+          class="slide-video"
+          src="https://youtu.be/5qibP8CMkAg"
+          title="HUGGA Demo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+
+        <div class="slide-caption">
+          <p class="caption-title">HUGGA Demo</p>
+          <p class="caption-desc">Human-like grasp generation pipeline</p>
+        </div>
+      </div>
+
+      <!-- VIDEO SLIDE 2 -->
+      <div class="slide">
+        <iframe
+          class="slide-video"
+          src="https://youtu.be/k5xiEQ94Ga0"
+          title="Hand imitation with 4DOF arms Demo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+
+        <div class="slide-caption">
+          <p class="caption-title">Hand imitation with 4DOF arms Demo</p>
+          <p class="caption-desc">Demonstration of hand imitation using 4DOF manipulators</p>
+        </div>
+      </div>
+
+      <!-- VIDEO SLIDE 3 -->
+      <div class="slide">
+        <iframe
+          class="slide-video"
+          src="https://youtube.com/shorts/JmWJVNLECyo"
+          title="PICK-CORD Demo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+
+        <div class="slide-caption">
+          <p class="caption-title">PICK-CORD Demo</p>
+          <p class="caption-desc">Multimodal dataset for learning from demonstration</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="slider-controls">
+      <button class="nav-btn" id="prev">&#8249;</button>
+      <div class="dots" id="dots"></div>
+      <span class="slide-counter" id="counter">1 / 2</span>
+      <button class="nav-btn" id="next">&#8250;</button>
+    </div>
+  </div>
 
   <div class="overlay" id="overlay"></div>
   <div class="popup" id="contact-popup">
